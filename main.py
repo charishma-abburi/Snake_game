@@ -133,6 +133,12 @@ class Game:
                 pygame.mixer.music.pause()
                 raise Exception("GAME OVER")
 
+        # snake collision with edges
+        if self.snake.x[0]>=1200 or self.snake.y[0]>=800 or self.snake.x[0]<0 or self.snake.y[0]<0:
+            self.play_sound("crash")
+            pygame.mixer.music.pause()
+            raise Exception("GAME OVER")
+
     def reset(self):
         self.snake = Snake(self.surface, 1)
         self.apple = Apple(self.surface)
